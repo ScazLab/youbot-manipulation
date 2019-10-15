@@ -1,3 +1,5 @@
+# Here are the original [documentation](https://github.com/svenschneider/youbot-manipulation.git)
+
 ## youbot_manipulation
 
 This repository contains packages for using the youBot's manipulator in ROS. It includes an analytical inverse position kinematics solver and configuration files for MoveIt!.
@@ -50,3 +52,12 @@ Then select the hardware group to move and command it to some known position (e.
 ### Documentation
 
 The MoveIt! kinematics plugin in the youbot_arm_kinematics_moveit package implements the standard MoveIt! interfaces. Therefore, consult the MoveIt! website (http://moveit.ros.org/) for further documentation related to using MoveIt!.
+
+# Here are the changes we made to customize to the single arm (no base) configuration
+
+Note that the `demo.launch` file from the `youbot-manipulation` package spawns both the youBot arm and the base. If working only with the arm, the following files should be edited:
+ * `youbot-manipulation/youbot_moveit/config/youbot.srdf`: Delete the lines of code that deal with the links that are in the base.
+ * `youbot-manipulation/youbot_moveit/launch/planning_context.launch`: Load `youbot_arm_only.urdf.xacro` instead of `youbot.urdf.xacro`.
+ * `youbot-manipulation/youbot_moveit/launch/moveit.rviz`: Change fixed frame (line 651) and target frame (line 670) from `/base_footprint` to `/base_link`.
+
+
