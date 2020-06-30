@@ -5,5 +5,5 @@
 
   <!-- The rest of the params are specific to this plugin -->
   <rosparam file="$(find youbot_moveit)/config/controllers.yaml"/>
-  
+
 </launch>
